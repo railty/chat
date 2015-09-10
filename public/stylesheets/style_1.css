@@ -1,0 +1,27 @@
+.bubbledLeft,.bubbledRight{
+	margin-top: 3px;
+	padding: 3px 5px 3px 5px;
+	max-width: 80%;
+	/*
+
+	*/
+	clear: both;
+	border: 1px solid grey;
+}
+
+.bubbledLeft{
+	/*
+	*/
+	float: left;
+
+	margin-right: auto;
+}
+
+.bubbledRight{
+	/*
+
+	*/
+	float: right;
+	margin-left: auto;
+	text-align: right;
+}

@@ -1,0 +1,67 @@
+<div id="content"></div>
+<script type="text/jsx">
+var msgs = [
+  {side: "Left", text: 'Hi'},
+  {side: "Right", text: 'Hi there yourself'},
+  {side: "Left", text: 'Do you speak Latin?'},
+  {side: "Right", text: 'Yes'},
+  {side: "Left", text: 'Prove it'},
+  {side: "Right", text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'},
+  {side: "Left", text: 'OK'},
+  {side: "Left", text: 'Take it all back, you do speak latin.'}];
+
+function sendMsg(msg){
+  alert('dsada'+msg);
+}
+var Bubble = React.createClass({
+  render: function() {
+    return (
+      <div className={'bubbled'+this.props.msg.side}>
+        {this.props.msg.text}
+      </div>
+    );
+  }
+});
+
+var ChatBox = React.createClass({
+  getInitialState: function() {
+   return {
+     msgs: this.props.msgs,
+     left: true,
+   };
+  },
+  sendMsg: function(e) {
+    var msg = {
+      side: this.state.left ? 'Left' : 'Right',
+      text: $("#imessage").val()
+    };
+    $("#imessage").val('');
+    var msgs = this.state.msgs.slice();
+    msgs.push(msg);
+    this.setState({msgs: msgs});
+  },
+  toggle: function(e) {
+    this.setState({left: !this.state.left});
+  },
+  render: function() {
+    var bubbles = this.state.msgs.map(function(msg, idx) {
+      return (
+        <Bubble key={idx} msg={msg} />
+      );
+    });
+
+    return (
+      <div className="commentArea">
+        {bubbles}
+        <input id="toggle_btn" type="submit" value={this.state.left ? 'Left' : 'Right'} onClick={this.toggle} />
+        <input id="imessage" type="text" name="imessage" placeholder="Text Message" />
+        <input id="send_btn" type="submit" value="Send" onClick={this.sendMsg} />
+      </div>
+    );
+  }
+});
+React.render(
+  <ChatBox msgs={msgs}/>,
+  document.getElementById('content')
+);
+</script>
