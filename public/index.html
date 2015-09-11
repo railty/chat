@@ -51,11 +51,13 @@ var ChatBox = React.createClass({
     });
 
     return (
-      <div className="commentArea">
+      <div className="room">
         {bubbles}
-        <input id="toggle_btn" type="submit" value={this.state.left ? 'Left' : 'Right'} onClick={this.toggle} />
-        <input id="imessage" type="text" name="imessage" placeholder="Text Message" />
-        <input id="send_btn" type="submit" value="Send" onClick={this.sendMsg} />
+        <div id="inputs">
+          <input id="toggle_btn" type="submit" value={this.state.left ? 'Left' : 'Right'} onClick={this.toggle} />
+          <input id="imessage" type="text" name="imessage" placeholder="Text Message" />
+          <input id="send_btn" type="submit" value="Send" onClick={this.sendMsg} />
+        </div>
       </div>
     );
   }

@@ -1,0 +1,20 @@
+html,body{
+	margin: 0px;
+	padding: 0px;
+}
+
+body,div,a{
+	font-family: Verdana, Tahoma, sans-serif;
+	font-size: 14px;
+}
+
+.room{
+  width: 600px;
+	height: 800px;
+	border: solid 1px blue;
+	margin: 5px;
+
+	display: -webkit-flex; /* Safari */
+  display: flex;
+	flex-direction: column;
+}
